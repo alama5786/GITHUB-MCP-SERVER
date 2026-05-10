@@ -72,6 +72,26 @@ This project implements a MCP server that acts as a bridge between AI assistants
    ./start.sh
    ```
 
+### Automated Setup (Recommended)
+
+For a faster setup experience, use the automated setup script:
+
+```bash
+# Make script executable
+chmod +x setup.sh
+
+# Run interactive setup
+./setup.sh
+```
+
+The script will:
+- ✅ Check Python and Git installation
+- ✅ Create virtual environment
+- ✅ Install all dependencies
+- ✅ Guide you through GitHub token setup
+- ✅ Configure VS Code integration
+- ✅ Test the MCP server
+
 ### Additional Documentation
 
 - See `docs/` folder for additional documentation files
@@ -127,6 +147,54 @@ The server can be started in two ways:
 ### Integration with AI Assistants
 
 This MCP server is designed to work with AI assistants that support the Model Context Protocol. Configure your AI assistant to connect to this server for GitHub operations.
+
+## Team Setup & Deployment
+
+### For Individual Developers
+
+Follow the **Installation** section above or use the automated setup script:
+
+```bash
+./setup.sh
+```
+
+For detailed setup instructions, see: [MCP Setup Guide](./docs/MCP_SETUP_GUIDE.md)
+
+### For Teams & Organizations
+
+If you need to set up this MCP server for your entire development team, refer to the team deployment guide:
+
+📖 **[Team Deployment Guide](./docs/TEAM_DEPLOYMENT_GUIDE.md)**
+
+This guide covers:
+- **Individual machine setup** (2-10 developers)
+- **Shared server deployment** (10+ developers)
+- **Docker-based deployment** (containerized teams)
+- **Kubernetes deployment** (enterprise scale)
+- **GitHub Codespaces** (cloud-based development)
+- **Token management strategies**
+- **Monitoring and maintenance**
+
+### GitHub Token Management
+
+Each developer needs a GitHub Personal Access Token. Choose your token strategy:
+
+1. **Individual tokens** (Recommended for small teams)
+   - Each dev creates their own token
+   - Better audit trails
+   - Easy revocation per person
+
+2. **Organization token** (For larger teams)
+   - Single shared token
+   - Managed centrally
+   - Easier setup but less granular control
+
+3. **OAuth2 flow** (For enterprise)
+   - More complex but most secure
+   - Automatic developer authentication
+   - Best for compliance
+
+See [MCP Setup Guide](./docs/MCP_SETUP_GUIDE.md#github-token-management) for detailed token setup instructions.
 
 ## Project Structure
 
