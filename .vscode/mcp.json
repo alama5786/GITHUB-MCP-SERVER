@@ -1,0 +1,20 @@
+{
+  "servers": {
+    "github-mcp-server": {
+      "type": "stdio",
+      "command": "/bin/bash",
+      "args": [
+        "/Users/azizalam/Documents/Apps/GenAI/Claude_GithubMCP_Server/github-mcp-server/start.sh"
+      ],
+      "env": {
+        "GITHUB_TOKEN": "${env:GITHUB_TOKEN}",
+        "GITHUB_API_BASE_URL": "https://api.github.com",
+        "GITHUB_REQUEST_TIMEOUT": "30",
+        "LOG_LEVEL": "INFO",
+        "LOG_FORMAT": "json",
+        "MCP_SERVER_NAME": "github-mcp-server",
+        "MCP_SERVER_VERSION": "0.1.0"
+      }
+    }
+  }
+}

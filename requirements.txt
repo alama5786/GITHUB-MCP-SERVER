@@ -1,0 +1,23 @@
+# Core MCP Protocol
+mcp>=1.0.0
+
+# HTTP Client (Async support required)
+httpx>=0.27.0
+
+# Configuration and Validation
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+
+# Environment Variables
+python-dotenv>=1.0.0
+
+# Tenacity for retries
+tenacity>=8.2.0
+
+# Development dependencies
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+pytest-httpx>=0.22.0  # For mocking HTTP
+black>=24.0.0
+ruff>=0.1.0
+mypy>=1.8.0

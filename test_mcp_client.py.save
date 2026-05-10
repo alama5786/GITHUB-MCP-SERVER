@@ -1,0 +1,18 @@
+# Create the test file using cat (or use any editor you prefer)
+cat > test_mcp_client.py << 'EOF'
+#!/usr/bin/env python3
+"""Simple MCP client for testing our server without Node.js."""
+
+import asyncio
+import json
+import subprocess
+import sys
+
+
+async def test_mcp_server():
+    """Launch the server and send test MCP messages."""
+    
+    print("=== Testing GitHub MCP Server ===\n")
+    
+    # Start the server process
+
