@@ -72,6 +72,12 @@ This project implements a MCP server that acts as a bridge between AI assistants
    ./start.sh
    ```
 
+### Additional Documentation
+
+- See `docs/` folder for additional documentation files
+- `GitHub_MCP_Server_Guide.docx` - Detailed setup and usage guide
+- `GitHub_MCP_Server_Talbot_BI.docx` - Business intelligence documentation
+
 ## Configuration
 
 ### Environment Variables
@@ -125,26 +131,53 @@ This MCP server is designed to work with AI assistants that support the Model Co
 ## Project Structure
 
 ```
-src/github_mcp/
-├── __init__.py
-├── server.py              # Main MCP server implementation
-├── config.py              # Configuration management
-├── logging_config.py      # Logging setup
-├── github/                # GitHub API client
-│   ├── __init__.py
-│   ├── client.py          # GitHub API client
-│   ├── models.py          # Data models
-│   ├── exceptions.py      # Custom exceptions
-│   └── rate_limiter.py    # Rate limiting
-├── tools/                 # MCP tool implementations
-│   ├── __init__.py
-│   ├── hello.py           # Basic tools
-│   ├── repositories.py    # Repository operations
-│   ├── contents.py        # Content operations
-│   ├── git_operations.py  # Git operations
-│   └── issues_prs.py      # Issues and PRs
-└── utils/
-    └── retry.py           # Retry utilities
+GITHUB-MCP-SERVER/
+├── .env                    # Environment configuration (ignored by git)
+├── .env.example           # Environment template
+├── .gitignore            # Git ignore rules
+├── README.md             # Project documentation
+├── pyproject.toml        # Python project configuration
+├── requirements.txt      # Python dependencies
+├── start.sh             # Startup script
+├── docs/                # Documentation files
+│   ├── GitHub_MCP_Server_Guide.docx
+│   └── GitHub_MCP_Server_Talbot_BI.docx
+├── src/                 # Source code
+│   └── github_mcp/      # Main package
+│       ├── __init__.py
+│       ├── server.py              # Main MCP server implementation
+│       ├── config.py              # Configuration management
+│       ├── logging_config.py      # Logging setup
+│       ├── github/                # GitHub API client
+│       │   ├── __init__.py
+│       │   ├── client.py          # GitHub API client
+│       │   ├── models.py          # Data models
+│       │   ├── exceptions.py      # Custom exceptions
+│       │   └── rate_limiter.py    # Rate limiting
+│       ├── tools/                 # MCP tool implementations
+│       │   ├── __init__.py
+│       │   ├── hello.py           # Basic tools
+│       │   ├── repositories.py    # Repository operations
+│       │   ├── contents.py        # Content operations
+│       │   ├── git_operations.py  # Git operations
+│       │   └── issues_prs.py      # Issues and PRs
+│       └── utils/
+│           └── retry.py           # Retry utilities
+├── tests/               # Test files
+│   ├── test_config.py
+│   ├── test_server.py
+│   ├── test_file_direct.py
+│   ├── test_file_final.py
+│   ├── test_file_operations.py
+│   ├── test_git_operations.py
+│   ├── test_github_client.py
+│   ├── test_imports.py
+│   ├── test_issues_prs.py
+│   ├── test_mcp_client.py
+│   ├── test_repository_tools.py
+│   └── test_token_permissions.py
+└── .vscode/             # VS Code configuration
+    └── mcp.json
 ```
 
 ## Development
@@ -155,11 +188,17 @@ src/github_mcp/
 # Install development dependencies
 pip install -e ".[dev]"
 
-# Run tests
+# Run all tests
 pytest
 
-# Run with coverage
-pytest --cov=github_mcp
+# Run tests with coverage
+pytest --cov=github_mcp --cov-report=html
+
+# Run specific test file
+pytest tests/test_server.py
+
+# Run tests with verbose output
+pytest -v
 ```
 
 ### Code Quality
@@ -172,13 +211,19 @@ The project uses several tools for code quality:
 
 ```bash
 # Format code
-black src/
+black src/ tests/
 
 # Lint code
-ruff check src/
+ruff check src/ tests/
+
+# Fix linting issues automatically
+ruff check src/ tests/ --fix
 
 # Type check
 mypy src/
+
+# Run all quality checks
+black src/ tests/ && ruff check src/ tests/ --fix && mypy src/
 ```
 
 ### Building
@@ -243,6 +288,11 @@ For issues, questions, or contributions:
 - Repository, content, and issue management tools
 - MCP protocol implementation
 - Comprehensive test suite
+- Project structure reorganization
+- Added comprehensive README documentation
+- Organized test files in `tests/` directory
+- Added documentation folder `docs/`
+- Clean project structure following Python best practices
 
 ## Acknowledgments
 
